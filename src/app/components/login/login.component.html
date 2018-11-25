@@ -1,0 +1,22 @@
+   
+  <div class="row mt-5">
+      <div class="col-6 mx-auto">
+        
+        <h1><span class="badge"><i class="fa fa-lock"></i></span> Login</h1>
+  
+        <div class="form-group">
+          <label for="email">email</label>
+          <input [(ngModel)]="email" type="email" name="email" id="email" class="form-control" >
+        </div>
+    
+        <div class="form-group">
+          <label for="password">password</label>
+          <input (keyup.enter)="myLogin.click()" [(ngModel)]="password" type="password" name="password" id="password" class="form-control" >
+        </div>
+    
+        <button #myLogin (click)="authentication()" class="btn btn-danger btn-block"><i class="fa fa-user"></i> Login</button>
+       
+       </div>
+    </div>
+  
+     

@@ -1,0 +1,41 @@
+
+
+   <div class="row my-3">
+     <div class="col-md-12">
+       <div class="row">
+         <div class="col-md-5"> <h1>List of clients</h1></div>
+         <div class="col-md-5"> <h2> <span class="badge badge-success">{{ balance | currency }}</span></h2>  </div>
+         <div class="col-md-2 text-right">
+           <a routerLink="/clients/add" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+         </div>
+       </div>
+      
+
+       <input #query (keyup)="search(query.value)" type="text" placeholder="Search..." class="form-control">
+       <table class="table striped">
+         <thead>
+           <tr>
+             <th>Name</th>
+             <th>Phone</th>
+             <th>Email</th>
+             <th>Balance</th>
+             <th>code</th>
+             <th></th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr *ngFor="let client of searchClients">
+             <td> <span class="mr-2"> <i (click)="toggleActive(client.id, client?.active)" class="fa fa-power-off" [ngStyle]="{ 'color': client?.active ? 'green' : 'red' }"></i> </span>  {{ client.firstName | lowercase | resume:2 }} {{ client.lastName | uppercase }}</td>
+             <td>{{ client.phone }}</td>
+             <td>{{ client.email }}</td>
+             <td>{{ client.balance | currency }}</td>
+             <td>{{ client.balance | number:'4.2-2' }}</td>
+             <td class="text-right">
+               <a [routerLink]="['/clients', client.id]" class="btn btn-success btn-sm mr-2"><i class="fa fa-eye"></i></a>
+               <a [routerLink]="['/clients/edit', client.id]" class="btn btn-danger btn-sm"><i class="fa fa-pencil"></i></a>
+             </td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </div>
